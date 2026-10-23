@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAJOR ADDA - Premium Esports Tournaments</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: #0b0706;
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: #0f0907;
+      border-bottom: 1px solid #1e130f;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid #ff4500;
+    }
+
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+    }
+
+    .brand-title span {
+      color: #ff3b19;
+      margin-left: 2px;
+    }
+
+    .menu-icon {
+      font-size: 1.5rem;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 30px 20px 45px 20px;
+      text-align: left;
+      background: linear-gradient(180deg, rgba(11, 7, 6, 0.72) 0%, rgba(11, 7, 6, 0.96) 100%),
+                  url("https://i.ibb.co/GjP0x3C/4360196e9638.png") center/cover no-repeat;
+    }
+
+    .banners-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .promo-banner {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #2d1810;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    .promo-banner img {
+      width: 100%;
+      display: block;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* Live Matches Tag */
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(255, 59, 25, 0.12);
+      border: 1px solid rgba(255, 59, 25, 0.35);
+      color: #ff3b19;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 18px;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #ff3b19;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #ff3b19;
+    }
+
+    /* Main Headline */
+    .hero-title {
+      font-size: 2.3rem;
+      font-weight: 900;
+      line-height: 1.15;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .hero-title .highlight {
+      color: #ff3b19;
+      display: block;
+    }
+
+    .hero-description {
+      font-size: 0.92rem;
+      color: #cfc7c4;
+      line-height: 1.55;
+      margin-bottom: 24px;
+      max-width: 480px;
+    }
+
+    /* App Logo Box */
+    .app-logo-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .app-logo {
+      width: 95px;
+      height: 95px;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 6px 20px rgba(255, 59, 25, 0.25);
+      border: 2px solid rgba(255, 59, 25, 0.4);
+    }
+
+    /* Action Buttons */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 380px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 24px;
+      border-radius: 35px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-download {
+      background: linear-gradient(135deg, #ff4500, #ff2600);
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(255, 38, 0, 0.4);
+    }
+
+    .btn-channel {
+      background: #10b981;
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+    }
+
+    /* Stats Section */
+    .stats-section {
+      padding: 30px 18px;
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .stats-section::-webkit-scrollbar {
+      display: none;
+    }
+
+    .stat-card {
+      min-width: 130px;
+      flex: 1;
+      background: #140d0a;
+      border: 1px solid #291711;
+      border-radius: 16px;
+      padding: 22px 14px;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    .stat-number {
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: #ff4500;
+      margin-bottom: 6px;
+      text-shadow: 0 0 10px rgba(255, 69, 0, 0.3);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #a49a96;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    /* Features Section */
+    .features-section {
+      padding: 35px 20px;
+    }
+
+    .features-header {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: #ff3b19;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .section-subtitle {
+      font-size: 0.88rem;
+      color: #8c827e;
+      margin-top: 4px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .feature-card {
+      background: #140d0a;
+      border: 1px solid #291711;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      color: #ff4500;
+    }
+
+    .feature-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .feature-card p {
+      font-size: 0.85rem;
+      color: #9f9490;
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" class="brand">
+      <img src="https://i.ibb.co/0RM1RBkJ/18462794f2fd.png" alt="MAJOR ADDA Logo" class="logo-img" />
+      <div class="brand-title">MAJOR<span>ADDA</span></div>
+    </a>
+    <div class="menu-icon">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    
+    <!-- 2 Banners Above Live Matches -->
+    <div class="banners-container">
+      <div class="promo-banner">
+        <img src="https://i.ibb.co/4ZPDDz12/e3e82886a332.png" alt="Promo Banner 1" />
+      </div>
+      <div class="promo-banner">
+        <img src="https://i.ibb.co/DfLhLPQ4/d1e023732d34.png" alt="Promo Banner 2" />
+      </div>
+    </div>
+
+    <!-- Live Matches Badge -->
+    <div class="live-badge">
+      <div class="live-dot"></div>
+      LIVE MATCHES ONGOING
+    </div>
+
+    <!-- Headline -->
+    <h1 class="hero-title">
+      TIME TO SHOW <span class="highlight">YOUR SKILL</span>
+    </h1>
+
+    <!-- Description -->
+    <p class="hero-description">
+      MAJOR ADDA is a 100% 🔐secured and fair🛡️ platform. Show your skill in major adda and win prizes🏆. MAJOR ADDA also provide free matches🆓 every day. Download now⛓️‍💥.
+    </p>
+
+    <!-- App Logo (Medium Size) Above Download Button -->
+    <div class="app-logo-box">
+      <img src="https://i.ibb.co/0RM1RBkJ/18462794f2fd.png" alt="MAJOR ADDA App" class="app-logo" />
+    </div>
+
+    <!-- Buttons -->
+    <div class="btn-group">
+      <a href="https://github.com/skizmzkzkkx-glitch/Dd/raw/refs/heads/main/MAJOR_ADDA_TOURNAMENT.apk" class="btn btn-download" download>
+        <i class="fa-solid fa-download"></i> Download Now
+      </a>
+      <a href="https://t.me/+SwkXjOQdO_dhYjM1" target="_blank" rel="noopener noreferrer" class="btn btn-channel">
+        <i class="fa-brands fa-telegram"></i> Join Channel
+      </a>
+    </div>
+
+  </section>
+
+  <!-- Stats Cards -->
+  <section class="stats-section">
+    <div class="stat-card">
+      <div class="stat-number">10K+</div>
+      <div class="stat-label">Active Players</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">400+</div>
+      <div class="stat-label">Tournaments</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">24/7</div>
+      <div class="stat-label">Live Matches</div>
+    </div>
+  </section>
+
+  <!-- App Features -->
+  <section class="features-section">
+    <div class="features-header">
+      <h2 class="section-title">App Features</h2>
+      <p class="section-subtitle">Why players choose Major Adda</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-gamepad"></i></div>
+        <h3>Daily Tournaments</h3>
+        <p>Participate in multiple matches every single day across different modes.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+        <h3>Instant Results</h3>
+        <p>Automated score verification and instant prize updates on your profile.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Secure Matches</h3>
+        <p>Anti-cheat system and dedicated moderators ensuring 100% fair play.</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
